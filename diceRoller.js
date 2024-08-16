@@ -50,4 +50,23 @@ console.log("Super awesome dice result is: " + superAwesomeDiceResult);
 
 
 
+function rollD20WithAdvantge(){
+    let diceResult = [
+        rollD20(),
+        rollD20()
+    ]
 
+    let highestRoll = 0;
+
+    diceResult.forEach((individualeResult) => {
+        if (highestRoll < individualeResult){
+            highestRoll = individualeResult;
+        }
+    })
+    console.log(diceResult);
+    
+    return highestRoll
+}
+
+
+console.log("Rolling D20 with Advantge: " + rollD20WithAdvantge());
