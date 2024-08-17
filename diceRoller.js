@@ -1,6 +1,17 @@
 
 console.log("Dice roller file loaded.");
 
+
+
+// Is a closure, because rollDice is a function 
+console.log(rollDice(20));
+
+
+// Not a closure, because rollD20 is a const variable 
+console.log(rollD20());
+
+
+
 // Function that rolls a dice and the dice size is a parameter 
 // generic dice roller function 
 function rollDice(diceSize = 6){
@@ -32,7 +43,7 @@ function rollDice(diceSize = 6){
 // specific dice roller function that calls the generic function 
 const rollD6 = () => rollDice(6);
 
-console.log("RollD6 function result is:  " + rollD6());
+console.log("RollD6 function result is: " + rollD6());
 
 // Function that rolls a dice and the dice is a 20-sided dice 
 // specific dice roller function that calls the generic function 
@@ -48,25 +59,46 @@ let superAwesomeDiceResult = rollD20();
 
 console.log("Super awesome dice result is: " + superAwesomeDiceResult);
 
+// Declare without assignment
+let diceResults; 
 
+// let, var, const 
 
-function rollD20WithAdvantge(){
-    let diceResult = [
-        rollD20(),
-        rollD20()
-    ]
+function rollD20WithAdvantage(){
+	let tempDiceResults = [
+		rollD20(),
+		rollD20()
+	];
 
-    let highestRoll = 0;
+	let highestRoll = 0;
 
-    diceResult.forEach((individualeResult) => {
-        if (highestRoll < individualeResult){
-            highestRoll = individualeResult;
-        }
-    })
-    console.log(diceResult);
-    
-    return highestRoll
+	tempDiceResults.forEach((individualResult) => {
+		if (highestRoll < individualResult){
+			highestRoll = individualResult;
+		}
+	});
+	
+	console.log(tempDiceResults);
+
+	return highestRoll;
 }
 
 
-console.log("Rolling D20 with Advantge: " + rollD20WithAdvantge());
+
+console.log("Rolling 2 D20 with advantage:" + rollD20WithAdvantage());
+
+
+// console.log("First roll in advantage rolls is: " + diceResults[0]);
+
+// console.log(tempDiceResults);
+
+
+
+// let and var can be changed after declaration
+var diceResultChangeable = rollD20();
+diceResultChangeable = rollD20();
+
+// const cannot be changed after declaration 
+const diceResultConstant = rollD20();
+diceResultConstant = rollD20();
+
